@@ -15,7 +15,7 @@ title: How to Write a Git Commit Message
 
 ---
 
-## Introduction: Why good commit messages matter <a id="intro"></a>
+# Introduction: Why good commit messages matter <a id="intro"></a>
 
 If you browse the log of any random Git repository, you will probably find its commit messages are more or less a mess. For example, take a look at [these gems](https://github.com/spring-projects/spring-framework/commits/e5f4b49?author=cbeams) from my early days committing to Spring:
 
@@ -38,9 +38,8 @@ Yikes. Compare that with these [more recent](https://github.com/spring-projects/
     ac8326d Polish mockito usage
 
 Which would you rather read?
-
-The former varies in length and form; the latter is concise and consistent.<br>
-The former is what happens by default; the latter never happens by accident.
+* The former varies in length and form; the latter is concise and consistent.<br>
+* The former is what happens by default; the latter never happens by accident.
 
 While many repositories' logs look like the former, there are exceptions. The [Linux kernel](https://github.com/torvalds/linux/commits/master) and [Git itself](https://github.com/git/git/commits/master) are great examples. Look at [Spring Boot](https://github.com/spring-projects/spring-boot/commits/master), or any repository managed by [Tim Pope](https://github.com/tpope/vim-pathogen/commits/master).
 
@@ -54,22 +53,22 @@ But a well-cared for log is a beautiful and useful thing. `git blame`, `revert`,
 
 A project's long-term success rests (among other things) on its maintainability, and a maintainer has few tools more powerful than his project's log. It's worth taking the time to learn how to care for one properly. What may be a hassle at first soon becomes habit, and eventually a source of pride and productivity for all involved.
 
-In this post, I am addressing just the most basic element of keeping a healthy commit history: how to write an individual commit message. There are other important practices like commit squashing that I am not addressing here. Perhaps I'll do that in a subsequent post.
+In this post, I am addressing just the most basic element of keeping a healthy commit history: _how to write an individual commit message_. There are other important practices like commit squashing that I am not addressing here. Perhaps I'll do that in a subsequent post.
 
 Most programming languages have well-established conventions as to what constitutes idiomatic style, i.e. naming, formatting and so on. There are variations on these conventions, of course, but most developers agree that picking one and sticking to it is far better than the chaos that ensues when everybody does their own thing.
 
 A team's approach to its commit log should be no different. In order to create a useful revision history, teams should first agree on a commit message convention that defines at least the following three things:
 
-**Style.** Markup syntax, wrap margins, grammar, capitalization, punctuation. Spell these things out, remove the guesswork, and make it all as simple as possible. The end result will be a remarkably consistent log that's not only a pleasure to read but that actually _does get read_ on a regular basis.
+**Style:** Markup syntax, wrap margins, grammar, capitalization, punctuation. Spell these things out, remove the guesswork, and make it all as simple as possible. The end result will be a remarkably consistent log that's not only a pleasure to read but that actually _does get read_ on a regular basis.
 
-**Content.** What kind of information should the body of the commit message (if any) contain? What should it _not_ contain?
+**Content:** What kind of information should the body of the commit message (if any) contain? What should it _not_ contain?
 
-**Metadata.** How should issue tracking IDs, pull request numbers, etc. be referenced?
+**Metadata:** How should issue tracking IDs, pull request numbers, etc. be referenced?
 
 Fortunately, there are well-established conventions as to what makes an idiomatic Git commit message. Indeed, many of them are assumed in the way certain Git commands function. There's nothing you need to re-invent. Just follow the [seven rules](#seven-rules) below and you're on your way to committing like a pro.
 
 
-## The seven rules of a great Git commit message <a id="seven-rules"></a>
+# The seven rules of a great Git commit message <a id="seven-rules"></a>
 
 > _Keep in mind: [This][1] [has][2] [all][3] [been][4] [said][5] [before][6]._
 
@@ -111,7 +110,7 @@ For example:
     Resolves: #123
     See also: #456, #789
 
-### 1. Separate subject from body with a blank line <a id="separate"></a>
+## 1. Separate subject from body with a blank line <a id="separate"></a>
 
 From the `git commit` [manpage](https://www.kernel.org/pub/software/scm/git/docs/git-commit.html#_discussion):
 
@@ -175,7 +174,7 @@ Or, `git shortlog`, which groups commits by user, again showing just the subject
 There are a number of other contexts in Git where the distinction between subject line and body kicks in—but none of them work properly without the blank line in between.
 
 
-### 2. Limit the subject line to 50 characters <a id="limit-50"></a>
+## 2. Limit the subject line to 50 characters <a id="limit-50"></a>
 
 50 characters is not a hard limit, just a rule of thumb. Keeping subject lines at this length ensures that they are readable, and forces the author to think for a moment about the most concise way to explain what's going on.
 
@@ -192,36 +191,32 @@ And will truncate any subject line longer than 72 characters with an ellipsis:
 So shoot for 50 characters, but consider 72 the hard limit.
 
 
-### 3. Capitalize the subject line <a id="capitalize"></a>
+## 3. Capitalize the subject line <a id="capitalize"></a>
 
 This is as simple as it sounds. Begin all subject lines with a capital letter.
 
 For example:
 
- - Accelerate to 88 miles per hour
-{: style="color: green"}
+ - <span style="background-color: #D5FFC6; color: black; padding-right: 4pt; padding-left: 4pt;">Accelerate to 88 miles per hour</span>
 
 Instead of:
 
- - accelerate to 88 miles per hour
-{: style="color: red"}
+ - <span style="background-color: #FFCC9F; color: black; padding-right: 4pt; padding-left: 4pt;">accelerate to 88 miles per hour</span>
 
-### 4. Do not end the subject line with a period <a id="end"></a>
+## 4. Do not end the subject line with a period <a id="end"></a>
 
 Trailing punctuation is unnecessary in subject lines. Besides, space is precious when you're trying to keep them to [50 chars or less](#limit-50).
 
 Example:
 
- - Open the pod bay doors
-{: style="color: green"}
+ - <span style="background-color: #D5FFC6; color: black; padding-right: 4pt; padding-left: 4pt;">Open the pod bay doors</span>
 
 Instead of:
 
- - Open the pod bay doors.
-{: style="color: red"}
+ - <span style="background-color: #FFCC9F; color: black; padding-right: 4pt; padding-left: 4pt;">Open the pod bay doors.</span>
 
 
-### 5. Use the imperative mood in the subject line <a id="imperative"></a>
+## 5. Use the imperative mood in the subject line <a id="imperative"></a>
 
 _Imperative mood_ just means "spoken or written as if giving a command or instruction". A few examples:
 
@@ -249,23 +244,20 @@ Or when clicking the "Merge" button on a GitHub pull request:
 
 So when you write your commit messages in the imperative, you're following Git's own built-in conventions. For example:
 
- - Refactor subsystem X for readability
- - Update getting started documentation
- - Remove deprecated methods
- - Release version 1.0.0
-{: style="color: green"}
+ - <span style="background-color: #D5FFC6; color: black; padding-right: 4pt; padding-left: 4pt">Refactor subsystem X for readability</span>
+ - <span style="background-color: #D5FFC6; color: black; padding-right: 4pt; padding-left: 4pt">Update getting started documentation</span>
+ - <span style="background-color: #D5FFC6; color: black; padding-right: 4pt; padding-left: 4pt">Remove deprecated methods</span>
+ - <span style="background-color: #D5FFC6; color: black; padding-right: 4pt; padding-left: 4pt">Release version 1.0.0</span>
 
 Writing this way can be a little awkward at first. We're more used to speaking in the _indicative mood_, which is all about reporting facts. That's why commit messages often end up reading like this:
 
- - Fixed bug with Y
- - Changing behavior of X
-{: style="color: red"}
+ - <span style="background-color: #FFCC9F; color: black; padding-right: 4pt; padding-left: 4pt;">Fixed bug with Y</span>
+ - <span style="background-color: #FFCC9F; color: black; padding-right: 4pt; padding-left: 4pt;">Changing behavior of X</span>
 
 And sometimes commit messages get written as a description of their contents:
 
- - More fixes for broken stuff
- - Sweet new API methods
-{: style="color: red"}
+ - <span style="background-color: #FFCC9F; color: black; padding-right: 4pt; padding-left: 4pt;">More fixes for broken stuff</span>
+ - <span style="background-color: #FFCC9F; color: black; padding-right: 4pt; padding-left: 4pt;">Sweet new API methods</span>
 
 To remove any confusion, here's a simple rule to get it right every time.
 
@@ -275,22 +267,22 @@ To remove any confusion, here's a simple rule to get it right every time.
 
 For example:
 
- - If applied, this commit will _refactor subsystem X for readability_{: style="color: green"}
- - If applied, this commit will _update getting started documentation_{: style="color: green"}
- - If applied, this commit will _remove deprecated methods_{: style="color: green"}
- - If applied, this commit will _release version 1.0.0_{: style="color: green"}
- - If applied, this commit will _merge pull request #123 from user/branch_{: style="color: green"}
+ - <span style="background-color: #D5FFC6; color: black; padding-right: 4pt; padding-left: 4pt">If applied, this commit will _refactor subsystem X for readability_</span>
+ - <span style="background-color: #D5FFC6; color: black; padding-right: 4pt; padding-left: 4pt">If applied, this commit will _update getting started documentation_</span>
+ - <span style="background-color: #D5FFC6; color: black; padding-right: 4pt; padding-left: 4pt">If applied, this commit will _remove deprecated methods_</span>
+ - <span style="background-color: #D5FFC6; color: black; padding-right: 4pt; padding-left: 4pt">If applied, this commit will _release version 1.0.0_</span>
+ - <span style="background-color: #D5FFC6; color: black; padding-right: 4pt; padding-left: 4pt">If applied, this commit will _merge pull request #123 from user/branch_</span>
 
 Notice how this doesn't work for the other non-imperative forms:
 
- - If applied, this commit will _fixed bug with Y_{: style="color: red"}
- - If applied, this commit will _changing behavior of X_{: style="color: red"}
- - If applied, this commit will _more fixes for broken stuff_{: style="color: red"}
- - If applied, this commit will _sweet new API methods_{: style="color: red"}
+ - <span style="background-color: #FFCC9F; color: black; padding-right: 4pt; padding-left: 4pt;">If applied, this commit will _fixed bug with Y_</span>
+ - <span style="background-color: #FFCC9F; color: black; padding-right: 4pt; padding-left: 4pt;">If applied, this commit will _changing behavior of X_</span>
+ - <span style="background-color: #FFCC9F; color: black; padding-right: 4pt; padding-left: 4pt;">If applied, this commit will _more fixes for broken stuff_</span>
+ - <span style="background-color: #FFCC9F; color: black; padding-right: 4pt; padding-left: 4pt;">If applied, this commit will _sweet new API methods_</span>
 
 > _Remember: Use of the imperative is important only in the subject line. You can relax this restriction when you're writing the body._
 
-### 6. Wrap the body at 72 characters <a id="wrap-72}
+## 6. Wrap the body at 72 characters <a id="wrap-72}
 
 Git never wraps text automatically. When you write the body of a commit message, you must mind its right margin, and wrap text manually.
 
@@ -299,7 +291,7 @@ The recommendation is to do this at 72 characters, so that Git has plenty of roo
 A good text editor can help here. It's easy to configure Vim, for example, to wrap text at 72 characters when you're writing a Git commit. Traditionally, however, IDEs have been terrible at providing smart support for text wrapping in commit messages (although in recent versions, IntelliJ IDEA has [finally](https://youtrack.jetbrains.com/issue/IDEA-53615) [gotten](https://youtrack.jetbrains.com/issue/IDEA-53615#comment=27-448299) [better](https://youtrack.jetbrains.com/issue/IDEA-53615#comment=27-446912) about this).
 
 
-### 7. Use the body to explain what and why vs. how <a id="why-not-how"></a>
+## 7. Use the body to explain what and why vs. how <a id="why-not-how"></a>
 
 This [commit from Bitcoin Core](https://github.com/bitcoin/bitcoin/commit/eb0b56b19017ab5c16c745e6da39c53126924ed6) is a great example of explaining what changed and why:
 
@@ -332,9 +324,9 @@ In most cases, you can leave out details about how a change has been made. Code 
 The future maintainer that thanks you may be yourself!
 
 
-## Tips <a id="tips"></a>
+# Tips <a id="tips"></a>
 
-### Learn to love the command line. Leave the IDE behind.
+## Learn to love the command line. Leave the IDE behind.
 
 For as many reasons as there are Git subcommands, it's wise to embrace the command line. Git is insanely powerful; IDEs are too, but each in different ways. I use an IDE every day (IntelliJ IDEA) and have used others extensively (Eclipse), but I have never seen IDE integration for Git that could begin to match the ease and power of the command line (once you know it).
 
@@ -344,7 +336,7 @@ When it comes to wielding the full power of Git, it's command-line all the way.
 
 Remember that whether you use Bash or Zsh or Powershell, there are [tab](https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Bash) [completion](https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Zsh) [scripts](https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Powershell) that take much of the pain out of remembering the subcommands and switches.
 
-### Read Pro Git
+## Read Pro Git
 
 The [Pro Git](https://git-scm.com/book/en/v2) book is available online for free, and it's fantastic. Take advantage!
 
