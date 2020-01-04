@@ -1,5 +1,5 @@
 # How to write Java documentation
-These are rules for writing documentation comments and is based on an [article](https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html) from the Oracle Technology Network.
+These are rules for writing documentation comments are partly inspired by popular style guides (See [Sources](#sources) for more information) and my personl experience.
 
 Documentation comments are written for overview, package, class, interface, field, constructor, method. And subsequently the term _API Items_ will refer to these in general, unless mentioned otherwise.
 
@@ -13,9 +13,9 @@ The following is an example of a typical documentation comments (refer to this e
 /**
  * Returns an Image object that can then be painted on the screen. 
  * The url argument must specify an absolute {@link URL}. The name
- * argument is a specifier that is relative to the url argument. 
- * <p>
- * This method always returns immediately, whether or not the 
+ * argument is a specifier that is relative to the url argument.
+ * 
+ * <p>This method always returns immediately, whether or not the 
  * image exists. When this applet attempts to draw the image on
  * the screen, the data will be loaded. The graphics primitives 
  * that draw the image will incrementally paint on the screen. 
@@ -92,6 +92,9 @@ This is the first section of the documentation comments and follows the followin
     * Rules for framing this sentence:
         * **Methods**: should start with a verb - since methods describe/embodie an action
         * **Classes/Interfaces/Fields**: should state the object while omiting the subject - since these describe things (to be precise objects)
+
+* **Paragraphs**: One blank line—that is, a line containing only the aligned leading asterisk (*)—appears between paragraphs, and before the group of block tags if present. 
+    * Each paragraph but the first has `<p>` immediately before the first word, with no space after.
 
 * The description in general should be implementation independent. Don't inlcude platform specific details unless absolutely necessary, and mention while doing so.
     * You may start an implementation specific description with something like this - "On &lt;platform&gt;..." or "Impmentation-specific: ..."
@@ -304,3 +307,11 @@ This is the first section of the documentation comments and follows the followin
 ### Documenting Anonymous Inner Classes:
 * Documentation for these classes are ignored by the javadoc tool. The only way to document them is to include their documentation in that of it's closest outer class.
     * But make sure that the outer-class itself isn't ignored by the javadoc tool. Since, some poor programmers may write some higly nested (with many levels) classes - though in this case it's better to redesign and reimplement the code if possible.
+
+### Example of Documentation Comments:
+* This [links](./res/example-javadoc.md) to an example of documentation comments in practice.
+
+---
+## Sources <a id="sources"></a>
+* [How to Write Doc Comments for the Javadoc Tool](https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html) - Oracle Technology Network
+* [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html) - Github
