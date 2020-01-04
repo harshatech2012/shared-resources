@@ -12,12 +12,10 @@ title: How to Write a Git Commit Message
 ---
 
 [Introduction](#intro) \| [The Seven Rules](#seven-rules) \| [Tips](#tips)
-{: style="text-align: center"}
 
 ---
 
-## Introduction: Why good commit messages matter
-{: #intro}
+## Introduction: Why good commit messages matter <a id="intro"></a>
 
 If you browse the log of any random Git repository, you will probably find its commit messages are more or less a mess. For example, take a look at [these gems](https://github.com/spring-projects/spring-framework/commits/e5f4b49?author=cbeams) from my early days committing to Spring:
 
@@ -71,8 +69,7 @@ A team's approach to its commit log should be no different. In order to create a
 Fortunately, there are well-established conventions as to what makes an idiomatic Git commit message. Indeed, many of them are assumed in the way certain Git commands function. There's nothing you need to re-invent. Just follow the [seven rules](#seven-rules) below and you're on your way to committing like a pro.
 
 
-## The seven rules of a great Git commit message
-{: #seven-rules}
+## The seven rules of a great Git commit message <a id="seven-rules"></a>
 
 > _Keep in mind: [This][1] [has][2] [all][3] [been][4] [said][5] [before][6]._
 
@@ -114,8 +111,7 @@ For example:
     Resolves: #123
     See also: #456, #789
 
-### 1. Separate subject from body with a blank line
-{: #separate}
+### 1. Separate subject from body with a blank line <a id="separate"></a>
 
 From the `git commit` [manpage](https://www.kernel.org/pub/software/scm/git/docs/git-commit.html#_discussion):
 
@@ -179,8 +175,7 @@ Or, `git shortlog`, which groups commits by user, again showing just the subject
 There are a number of other contexts in Git where the distinction between subject line and body kicks in—but none of them work properly without the blank line in between.
 
 
-### 2. Limit the subject line to 50 characters
-{: #limit-50}
+### 2. Limit the subject line to 50 characters <a id="limit-50"></a>
 
 50 characters is not a hard limit, just a rule of thumb. Keeping subject lines at this length ensures that they are readable, and forces the author to think for a moment about the most concise way to explain what's going on.
 
@@ -197,8 +192,7 @@ And will truncate any subject line longer than 72 characters with an ellipsis:
 So shoot for 50 characters, but consider 72 the hard limit.
 
 
-### 3. Capitalize the subject line
-{: #capitalize}
+### 3. Capitalize the subject line <a id="capitalize"></a>
 
 This is as simple as it sounds. Begin all subject lines with a capital letter.
 
@@ -212,8 +206,7 @@ Instead of:
  - accelerate to 88 miles per hour
 {: style="color: red"}
 
-### 4. Do not end the subject line with a period
-{: #end}
+### 4. Do not end the subject line with a period <a id="end"></a>
 
 Trailing punctuation is unnecessary in subject lines. Besides, space is precious when you're trying to keep them to [50 chars or less](#limit-50).
 
@@ -228,8 +221,7 @@ Instead of:
 {: style="color: red"}
 
 
-### 5. Use the imperative mood in the subject line
-{: #imperative}
+### 5. Use the imperative mood in the subject line <a id="imperative"></a>
 
 _Imperative mood_ just means "spoken or written as if giving a command or instruction". A few examples:
 
@@ -298,8 +290,7 @@ Notice how this doesn't work for the other non-imperative forms:
 
 > _Remember: Use of the imperative is important only in the subject line. You can relax this restriction when you're writing the body._
 
-### 6. Wrap the body at 72 characters
-{: #wrap-72}
+### 6. Wrap the body at 72 characters <a id="wrap-72}
 
 Git never wraps text automatically. When you write the body of a commit message, you must mind its right margin, and wrap text manually.
 
@@ -308,8 +299,7 @@ The recommendation is to do this at 72 characters, so that Git has plenty of roo
 A good text editor can help here. It's easy to configure Vim, for example, to wrap text at 72 characters when you're writing a Git commit. Traditionally, however, IDEs have been terrible at providing smart support for text wrapping in commit messages (although in recent versions, IntelliJ IDEA has [finally](https://youtrack.jetbrains.com/issue/IDEA-53615) [gotten](https://youtrack.jetbrains.com/issue/IDEA-53615#comment=27-448299) [better](https://youtrack.jetbrains.com/issue/IDEA-53615#comment=27-446912) about this).
 
 
-### 7. Use the body to explain what and why vs. how
-{: #why-not-how}
+### 7. Use the body to explain what and why vs. how <a id="why-not-how"></a>
 
 This [commit from Bitcoin Core](https://github.com/bitcoin/bitcoin/commit/eb0b56b19017ab5c16c745e6da39c53126924ed6) is a great example of explaining what changed and why:
 
@@ -342,8 +332,7 @@ In most cases, you can leave out details about how a change has been made. Code 
 The future maintainer that thanks you may be yourself!
 
 
-## Tips
-{: #tips}
+## Tips <a id="tips"></a>
 
 ### Learn to love the command line. Leave the IDE behind.
 
