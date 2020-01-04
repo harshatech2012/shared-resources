@@ -85,7 +85,7 @@ This is the first section of the documentation comments and follows the followin
          */
         ```
     * The image demonstrates the point. It's the documentation for `charAt(int)` method of the String class.
-        ![charAt documentation](.\res\charAt_first_sentence.png)
+        ![charAt documentation](.\res\first-sentence-doc-ex.png)
     
     * Rules for framing this sentence:
         * **Methods**: should start with a verb - since methods describe/embodie an action
@@ -119,26 +119,26 @@ This is the first section of the documentation comments and follows the followin
     * `@return`
     * `@throws` (replaces `@exception`) 
     * `@see`
-    * `@since` - all
+    * `@since`
     * `@serial` (more specific forms `@serialField` & `@serialData`)
     * `@deprecated`
 
 * One may separate groups of similar tags by blank lines for better visual formatting.
 
-    > **Note:** A summary of where, how and when to used these tags is given in the following points. But for detailed information refer to the [this article](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/javadoc.html#wheretags).
+    > **Note:** A summary of where, how and when to used these tags is given in the following points. But for detailed information refer to the [this article](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/javadoc.html#javadoctags).
 
 * The following describes where, when and how to use these tags:
    
     * `@author` - used with class, interface, package & overview
         * Used for specifying the name(s) of contributing author(s)
-        * **Ordering**: Multiple contributing authors are ordered chronologically with the original creator at the top.
+        * **Ordering**: follow a chronological order with the original creator at the top.
    
     * `@version` - used with class, interface, package & overview
         * Holds the current version number of software that this code is part of.
    
     * `@param` - used with method & constructor
         * Used for describing a parameter.
-        * **Ordering**: Parameters in the order they appear in the decleration.
+        * **Ordering**: follows the same order as the parameters appear in the decleration.
         * Written in the following format: `@param <param-name> <description>`. Consider the following example:
             ```
             /**
@@ -176,7 +176,26 @@ This is the first section of the documentation comments and follows the followin
     *  `@since` - used with all API items
         * Specifies the product version when the API item was first introduced (added/written in code).
         * **How to use:** 
-            * In the absence of overriding tags, the value of the `@since` tag applies to each of the package's classes and members.
+            * When a package is introduced, specify an `@since` tag in its package description and each of its classes. 
+                * In the absence of overriding tags, the value of the this tag applies to each of the class's members.
+            * Do not specify this tag in the class's members. Add it only to the members added in a later version than the class. This minimizes the number of `@since` tags.
+        * Increason the scope of a member (by chaging its access modifier) at a later release doesn't entail change in `@since`'s value, despite the increase in accessibility.
+    
+    * `@throws` (replaces `@exception`) - used with methods
+        * Used to indicate which exceptions a programmer might want to catch and when they are thrown. It follows the format - `@throws <exception-class> <description>`.
+        * **Ordering**: follow an alphabetical order according to the exception class name.
+        * Always describe checked exceptions, and optionally unchecked exceptions that the caller might reasonably want to catch.
+            * Speaking of unchecked exceptions, never describe a `NullPointerException`.
+            > **Note**: The `throws` clause in a method decleration should only specify checked exceptions. Specifying unchecked exceptions is considered a bad programming practice.
+        * Do not describe `Error` and its sub-classes, as they are unpredictable.
+        * Never document an implementation-specific unchecked exception. 
+            * For example documenting `ArrayOutOfBoundsException` is implementation specific (since an implemenatation need not always use arrays, but an alternate data structure). But a more appropriate exception to document would be `IndexOutOfBoundsException`.
+        * **Caution**: Despite this documentation, a programmer should always assume that a method/constructor can throw unchecked exceptions that are undocumented.
+    
+    * Refer to [this article](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/javadoc.html#javadoctags) for information on inline-tags.
+
+> **Note**: Javadoc tags are used only to structure the human-readable documentation of a program and should never effect the program semantics.
+    > * Java Annotations on the other hand are used to effect the way a piece of code is viewed by a tool/library like the compiler, which might effect the way it's run.
 
 ---
 ## Style Guide
@@ -206,5 +225,19 @@ This is the first section of the documentation comments and follows the followin
 * Don't use abbreviations like aka (also known as), e.g. (for example), i.e. (to be specific), viz. (namely or in other words) etc. Use their expanded forms instead.
 
 ---
+## Package Level Documentation
+* This is a very important piece of documentations, since it's the first place programmers for documentation.
+* 
+
+> Note: Visit this [link](./res/package-doc-template.md) for a template of package level documentation.
+
+
+---
 ## Documentation source files
 TODO: write about source files for documentattion
+
+---
+## See Also
+### Documenting Anonymous Inner Classes:
+* Documentation for these classes are ignored by the javadoc tool. The only way to document them is to include their documentation in that of it's closest outer class.
+    * But make sure that the outer-class itself isn't ignored by the javadoc tool. Since, some poor programmers may write some higly nested (with many levels) classes - though in this case it's better to redesign and reimplement the code if possible.
