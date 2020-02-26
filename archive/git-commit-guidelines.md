@@ -282,7 +282,7 @@ Notice how this doesn't work for the other non-imperative forms:
 
 > _Remember: Use of the imperative is important only in the subject line. You can relax this restriction when you're writing the body._
 
-## 6. Wrap the body at 72 characters <a id="wrap-72}
+## 6. Wrap the body at 72 characters <a id="wrap-72"></a>
 
 Git never wraps text automatically. When you write the body of a commit message, you must mind its right margin, and wrap text manually.
 
