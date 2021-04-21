@@ -1,13 +1,13 @@
 # How to write Java documentation
-These are rules for writing documentation comments are partly inspired by popular style guides (See [Sources](#sources) for more information) and my personl experience.
+These are rules for writing documentation comments in Java, and are based on popular style guides (See [Sources](#sources) for more information).
 
-Documentation comments are written for overview, package, class, interface, field, constructor, method. And subsequently the term _API Items_ will refer to these in general, unless mentioned otherwise.
+Documentation comments are written for overview, package, class, interface, field, constructor, and method. And subsequently the term _API items_ will refer to these in general, unless mentioned otherwise.
 
-> **Note**: The term _Documentation Comments_ are used to denote comments enclosed in `/** ... */` which are processed by the `javadoc` tool for generating API documentation.
+> **Note**: The term _Documentation Comments_ is used to denote comments enclosed in `/** ... */` which are processed by the `javadoc` tool for generating API documentation.
 
 ---
 ## Overview
-The following is an example of a typical documentation comments (refer to this example while reading the documentation):
+The following is an example of a typical documentation comment (refer to this example while reading the documentation):
 
 ```
 /**
@@ -51,7 +51,7 @@ The resulting HTML render of the above documentation comments is as follows:
 <pre>
 getImage
 public Image getImage(URL url,
-             String name)
+                      String name)
 Returns an Image object that can then be painted on the screen. The url argument must specify an absolute URL. The name argument is a specifier that is relative to the url argument.
 
 This method always returns immediately, whether or not the image exists. When this applet attempts to draw the image on the screen, the data will be loaded. The graphics primitives that draw the image will incrementally paint on the screen.
@@ -87,17 +87,22 @@ This is the first section of the documentation comments and follows the followin
          * This is a simulation of Prof.<!-- --> Knuth's MIX computer.
          */
         ```
-    * The image demonstrates the point. It's the documentation for `charAt(int)` method of the String class.
-        ![charAt documentation](.\res\first-sentence-doc-ex.png)
+    * The image below demonstrates the point. It's the documentation for `charAt(int)` method of the String class.
+        ![charAt documentation](res/first-sentence-doc-ex.png)
     * Rules for framing this sentence:
         * **Methods**: should start with a verb - since methods describe/embodie an action
-        * **Classes/Interfaces/Fields**: should state the object while omiting the subject - since these describe things (to be precise objects)
+        * **Classes/Interfaces/Fields**: should state the object while omiting the subject - since these describe things (or more precisely objects)
 
 * **Paragraphs**: One blank line—that is, a line containing only the aligned leading asterisk (*)—appears between paragraphs, and before the group of block tags if present. 
     * Each paragraph but the first has `<p>` immediately before the first word, with no space after.
 
-* The description in general should be implementation independent. Don't inlcude platform specific details unless absolutely necessary, and mention while doing so.
-    * You may start an implementation specific description with something like this - "On &lt;platform&gt;..." or "Impmentation-specific: ..."
+* The description in general should be implementation independent. Don't inlcude platform specific details unless absolutely necessary, and mention while doing so. You may start an implementation specific description something like this:
+        
+        ```On <platform> ...```
+        
+        or 
+        
+        ```Implentation-specific: ...```
 
 > **Inheriting Method Documentation:**
 >
